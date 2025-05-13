@@ -24,6 +24,7 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 ul,
@@ -56,12 +57,11 @@ fieldset {
 }
 
 input {
-  border: none;
   margin: 0;
   padding: 0;
 }
 
-:focus-visible {
-  border: 2px solid black;
-  outline-offset: 2px;
+*:focus-visible {
+  outline: 5px solid #fcee21;
+  outline-offset: 3px;
 }
