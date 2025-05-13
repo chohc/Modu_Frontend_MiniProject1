@@ -1,0 +1,141 @@
+@import url(./font.css);
+
+:root {
+  --bg-color: #5b2386;
+  --yellow-text: #f5df4d;
+  --main-text: #fff;
+  --gray-text: #babcbe;
+  --yellow-button: #fcee21;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body {
+  font-family: "GmarketSans", sans-serif;
+  color: var(--main-text);
+  background-color: var(--bg-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0px 106px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button,
+a {
+  padding: 1.25rem 3.125rem;
+  border-radius: 0.75rem;
+  background-color: var(--yellow-button);
+  box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.15);
+
+  color: var(--bg-color);
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* header */
+
+.title {
+  margin: 0 2.56rem 3.25rem;
+  width: min(100%, 564px);
+  height: auto;
+}
+
+/* main */
+
+q {
+  display: inline-block;
+  font-size: 2.25rem;
+  font-family: "OTEnjoystoriesBA", sans-serif;
+  color: var(--yellow-text);
+  margin: 0 0 5rem;
+}
+
+.define {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin-bottom: 6.25rem;
+  line-height: 1.7;
+
+  position: relative;
+}
+
+.define::before,
+.define::after {
+  content: "";
+  display: inline-block;
+  width: 2.25rem;
+  height: 2rem;
+  background: url(../image/“.png) no-repeat;
+
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.define::before {
+  left: -3.5rem;
+}
+
+.define::after {
+  right: -3.5rem;
+  transform: translate(0, -50%) rotate(180deg);
+}
+
+.define > dfn {
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+form > p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 6.25rem;
+}
+
+input {
+  width: 14.25rem;
+  padding: 1rem 2.5rem;
+  margin: 0 1.25rem 1.25rem;
+  gap: 0.625rem;
+
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--bg-color);
+
+  position: relative;
+}
+
+input::placeholder {
+  color: var(--gray-text);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -42%);
+}
+
+form > button {
+  margin: auto;
+}
