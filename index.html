@@ -38,18 +38,18 @@
         <span id="result-time">5100</span>일 이상 훈련하셔야 합니다!:)
       </p>
       <div class="btn-group">
-        <button id="showModalBtn">훈련하러 가기 GO! GO!</button>
+        <button id="showDialogBtn">훈련하러 가기 GO! GO!</button>
         <button>공유하기</button>
       </div>
     </main>
-    <!-- modal -->
-    <div id="modal" class="modal-bg" role="dialog" aria-hidden="true">
-      <div class="modal">
+    <!-- dialog -->
+    <div id="dialog" class="dialog-bg" role="dialog" aria-hidden="true">
+      <div class="dialog">
         <p>화이팅!!♥♥♥</p>
         <span>당신의 꿈을 응원합니다!</span>
         <div>
           <img src="./image/라이캣-img.png" alt="응원하는 라이캣" />
-          <a id="closeModalBtn">종료하고 진짜 훈련하러 가기 GO!GO!</a>
+          <a id="closeBtn">종료하고 진짜 훈련하러 가기 GO!GO!</a>
         </div>
       </div>
     </div>
@@ -62,18 +62,43 @@
     </footer>
   </body>
   <script>
-    const modal = document.getElementById("modal");
-    const showModalBtn = document.getElementById("showModalBtn");
-    const closeBtn = document.getElementById("closeModalBtn");
+    // form
+    const form = document.querySelector("form");
+    const skillInput = document.getElementById("skill");
+    const timeInput = document.getElementById("time");
+    const resultSkill = document.getElementById("result-skill");
+    const resultTime = document.getElementById("result-time");
 
-    showModalBtn.addEventListener("click", () => {
-      document.getElementById("modal").setAttribute("aria-hidden", "false");
-      document.getElementById("modal").style.display = "flex";
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const skill = skillInput.value.trim();
+      const time = parseFloat(timeInput.value);
+
+      if (!skill || isNaN(time) || time <= 0) {
+        alert("올바른 값을 입력해주세요.");
+        return;
+      }
+
+      const days = Math.ceil(10000 / time);
+
+      resultSkill.textContent = skill;
+      resultTime.textContent = days;
+    });
+
+    // dialog
+    const modal = document.getElementById("dialog");
+    const showDialogBtn = document.getElementById("showDialogBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    showDialogBtn.addEventListener("click", () => {
+      document.getElementById("dialog").setAttribute("aria-hidden", "false");
+      document.getElementById("dialog").style.display = "flex";
     });
 
     closeBtn.addEventListener("click", () => {
-      document.getElementById("modal").setAttribute("aria-hidden", "true");
-      document.getElementById("modal").style.display = "none";
+      document.getElementById("dialog").setAttribute("aria-hidden", "true");
+      document.getElementById("dialog").style.display = "none";
     });
   </script>
 </html>

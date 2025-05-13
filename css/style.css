@@ -189,7 +189,7 @@ form > button::after {
 }
 
 /* modal */
-.modal-bg {
+.dialog-bg {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -200,11 +200,11 @@ form > button::after {
   align-items: center;
 }
 
-.modal-bg[aria-hidden="true"] {
+.dialog-bg[aria-hidden="true"] {
   display: none;
 }
 
-.modal {
+.dialog {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,7 +218,7 @@ form > button::after {
   box-shadow: 4px 4px 30px 0px rgba(0, 0, 0, 0.15);
 }
 
-.modal > p {
+.dialog > p {
   font-family: "OTEnjoystoriesBA", sans-serif;
   font-size: 6rem;
   font-weight: 700;
@@ -226,20 +226,20 @@ form > button::after {
   margin-bottom: 0.25rem;
 }
 
-.modal > span {
+.dialog > span {
   font-family: "OTEnjoystoriesBA", sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 2.5rem;
 }
 
-.modal > div {
+.dialog > div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.modal img {
+.dialog img {
   width: 27.375rem;
   height: 21.375rem;
   margin-bottom: 3.75rem;
