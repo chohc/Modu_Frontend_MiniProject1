@@ -22,13 +22,22 @@
 }
 
 body {
-  font-family: "GmarketSans", sans-serif;
+  font-family: "GmarketSansMedium", sans-serif;
   color: var(--main-text);
   background-color: var(--bg-color);
+  font-weight: 400;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.pc-only {
+  display: inline;
+}
+
+.mobile-only {
+  display: none;
 }
 
 /* header */
@@ -38,8 +47,9 @@ header {
 }
 
 .title {
-  margin: 0 2.56rem 3.25rem;
-  width: min(100%, 564px);
+  width: min(100%, 646px);
+  padding: 0 2.56rem;
+  margin-bottom: 3.25rem;
   height: auto;
 }
 
@@ -61,7 +71,8 @@ a {
   color: var(--bg-color);
   text-align: center;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-family: "GmarketSansBold", sans-serif;
+  font-weight: 500;
 }
 
 button:hover,
@@ -73,6 +84,7 @@ q {
   display: inline-block;
   font-size: 2.25rem;
   font-family: "OTEnjoystoriesBA", sans-serif;
+  font-weight: 700;
   color: var(--yellow-text);
   margin: 0 0 5rem;
 }
@@ -80,7 +92,6 @@ q {
 .define {
   text-align: center;
   font-size: 1.125rem;
-  font-weight: 400;
   margin-bottom: 6.25rem;
   line-height: 1.7;
 
@@ -113,6 +124,7 @@ q {
   text-align: center;
   font-size: 1.5rem;
   font-style: normal;
+  font-family: "GmarketSansBold", sans-serif;
   font-weight: 700;
 }
 
@@ -120,7 +132,6 @@ form > p,
 .result {
   text-align: center;
   font-size: 1.5rem;
-  font-weight: 400;
   margin-bottom: 6.25rem;
 }
 
@@ -165,12 +176,17 @@ form > button::after {
   right: -4.44rem;
 }
 
-[id^="result"] {
+.result > span {
   font-size: 4.5rem;
+  font-family: "GmarketSansBold", sans-serif;
   font-weight: 700;
   line-height: 1.3;
   margin: 0 0.75rem;
   vertical-align: middle;
+}
+
+.line-break {
+  display: block;
 }
 
 .btn-group {
@@ -189,28 +205,29 @@ form > button::after {
 }
 
 /* modal */
-.dialog-bg {
+.modal-bg {
   position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.25rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dialog-bg[aria-hidden="true"] {
+.modal-bg[aria-hidden="true"] {
   display: none;
 }
 
-.dialog {
+.modal {
+  width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  width: 50rem;
   padding: 5rem 0;
+
   background-color: #fff;
   color: #5b2386;
   text-align: center;
@@ -218,30 +235,28 @@ form > button::after {
   box-shadow: 4px 4px 30px 0px rgba(0, 0, 0, 0.15);
 }
 
-.dialog > p {
+.modal span,
+.modal p {
   font-family: "OTEnjoystoriesBA", sans-serif;
-  font-size: 6rem;
   font-weight: 700;
-  line-height: 0.9;
+  line-height: 1;
+}
+
+.modal p,
+.modal span.pc-only {
+  font-size: 6rem;
   margin-bottom: 0.25rem;
 }
 
-.dialog > span {
-  font-family: "OTEnjoystoriesBA", sans-serif;
+.modal span {
   font-size: 2.25rem;
-  font-weight: 700;
   margin-bottom: 2.5rem;
 }
 
-.dialog > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dialog img {
-  width: 27.375rem;
-  height: 21.375rem;
+.modal img {
+  width: 438px;
+  aspect-ratio: 438/342;
+  object-fit: contain;
   margin-bottom: 3.75rem;
 }
 
@@ -262,7 +277,169 @@ footer > p {
   text-align: center;
   font-family: "Noto Sans KR";
   font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+}
+
+/* moblie version */
+@media screen and (max-width: 768px) {
+  .pc-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline;
+  }
+
+  header {
+    padding-top: 2.5rem;
+  }
+
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  /* main */
+
+  button,
+  a {
+    font-size: 0.875rem;
+  }
+
+  q {
+    font-size: 1.375rem;
+    margin-bottom: 2rem;
+  }
+
+  .define {
+    font-size: 0.875rem;
+    margin-bottom: 3.75rem;
+    line-height: 2;
+
+    position: relative;
+  }
+
+  .define::before,
+  .define::after {
+    width: 1.25rem;
+    height: 1.125rem;
+    background-size: contain;
+  }
+
+  .define::before {
+    left: -1.25rem;
+  }
+
+  .define::after {
+    right: -1.25rem;
+  }
+
+  .define > dfn {
+    font-size: 0.875rem;
+  }
+
+  form > p,
+  .result {
+    font-size: 0.875rem;
+    margin-bottom: 5rem;
+    word-break: keep-all;
+  }
+
+  input {
+    width: 9.75rem;
+    padding: 0.75rem 2.5rem;
+    margin: 0 0.5rem 0.75rem;
+  }
+
+  input:nth-of-type(2) {
+    margin-top: 0.75rem;
+  }
+
+  input::placeholder {
+    color: var(--gray-text);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -42%);
+  }
+
+  form > button {
+    margin-bottom: 4.25rem;
+    line-height: 1.4;
+  }
+
+  form > button::after {
+    width: 2.6875rem;
+    height: 3rem;
+    background-size: contain;
+
+    position: absolute;
+    top: 50%;
+    right: -2.69rem;
+  }
+
+  .result {
+    margin-bottom: 3.25rem;
+  }
+
+  .result > span {
+    font-size: 1.5rem;
+    margin: 0 0.75rem;
+  }
+
+  .line-break {
+    display: block;
+    height: 0.7rem;
+  }
+
+  .btn-group {
+    gap: 0.5rem;
+    margin-bottom: 3.75rem;
+  }
+
+  .btn-group > button {
+    padding: 1rem 1.5rem;
+    line-height: 1;
+  }
+
+  /* modal */
+  .modal {
+    width: 330px;
+    padding: 2.5rem 0;
+  }
+
+  .modal p {
+    font-size: 4rem;
+    margin-bottom: 0;
+  }
+
+  .modal > span {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal .pc-only {
+    font-size: 4rem !important;
+  }
+
+  .modal img {
+    width: 15rem;
+    height: 11.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* footer */
+
+  footer {
+    padding-bottom: 3rem;
+  }
+
+  footer > img {
+    width: 7.8125rem;
+    height: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  footer > p {
+    font-size: 0.5625rem;
+  }
 }

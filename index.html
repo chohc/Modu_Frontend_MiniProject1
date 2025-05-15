@@ -15,7 +15,7 @@
     <main>
       <q>연습은 어제의 당신보다 당신을 더 낫게 만든다.</q>
       <p class="define">
-        <dfn>1만 시간 법칙</dfn>은<br />어떤 분야의 전문가가 되기 위해서는<br />최소한
+        <dfn>1만 시간의 법칙</dfn>은<br />어떤 분야의 전문가가 되기 위해서는<br />최소한
         1만 시간의 훈련이 필요하다는 법칙이다.
       </p>
       <form>
@@ -25,32 +25,37 @@
           <input type="text" id="skill" placeholder="예)프로그래밍" />
           전문가가 될 것이다.<br />
           그래서 앞으로 매일 하루에
+          <br class="mobile-only" />
           <label for="time" class="sr-only">하루 훈련 시간</label>
           <input type="text" id="time" placeholder="예)5시간" />
           시간씩 훈련할 것이다.
         </p>
         <button type="submit">
-          나는 며칠 동안 훈련을 해야 1만 시간이 될까?
+          나는 며칠 동안 훈련을 해야<br class="mobile-only" />
+          1만 시간이 될까?
         </button>
       </form>
       <p class="result">
-        당신은 <span id="result-skill">프로그래밍</span> 전문가가 되기 위해서<br />대략
+        당신은 <span id="result-skill">프로그래밍</span> 전문가가 되기 위해서
+        <span class="line-break"></span>대략
         <span id="result-time">5100</span>일 이상 훈련하셔야 합니다!:)
       </p>
       <div class="btn-group">
-        <button id="showDialogBtn">훈련하러 가기 GO! GO!</button>
+        <button id="showModalBtn">훈련하러 가기 GO! GO!</button>
         <button>공유하기</button>
       </div>
     </main>
     <!-- dialog -->
-    <div id="dialog" class="dialog-bg" role="dialog" aria-hidden="true">
-      <div class="dialog">
-        <p>화이팅!!♥♥♥</p>
+    <div id="modal" class="modal-bg" role="dialog" aria-hidden="true">
+      <div class="modal">
+        <p>화이팅!!<span class="pc-only">♥♥♥</span></p>
         <span>당신의 꿈을 응원합니다!</span>
-        <div>
-          <img src="./image/라이캣-img.png" alt="응원하는 라이캣" />
-          <a id="closeBtn">종료하고 진짜 훈련하러 가기 GO!GO!</a>
-        </div>
+        <img src="./image/라이캣-img.png" alt="응원하는 라이캣" />
+        <a id="closeBtn">
+          종료하고 진짜
+          <br class="mobile-only" />
+          훈련하러 가기 GO!GO!
+        </a>
       </div>
     </div>
     <footer>
@@ -60,45 +65,21 @@
         수정 및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
       </p>
     </footer>
+    <script>
+      // dialog
+      const modal = document.getElementById("modal");
+      const showDialogBtn = document.getElementById("showModalBtn");
+      const closeBtn = document.getElementById("closeBtn");
+
+      showDialogBtn.addEventListener("click", () => {
+        document.getElementById("modal").setAttribute("aria-hidden", "false");
+        document.getElementById("modal").style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", () => {
+        document.getElementById("modal").setAttribute("aria-hidden", "true");
+        document.getElementById("modal").style.display = "none";
+      });
+    </script>
   </body>
-  <script>
-    // form
-    const form = document.querySelector("form");
-    const skillInput = document.getElementById("skill");
-    const timeInput = document.getElementById("time");
-    const resultSkill = document.getElementById("result-skill");
-    const resultTime = document.getElementById("result-time");
-
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const skill = skillInput.value.trim();
-      const time = parseFloat(timeInput.value);
-
-      if (!skill || isNaN(time) || time <= 0) {
-        alert("올바른 값을 입력해주세요.");
-        return;
-      }
-
-      const days = Math.ceil(10000 / time);
-
-      resultSkill.textContent = skill;
-      resultTime.textContent = days;
-    });
-
-    // dialog
-    const modal = document.getElementById("dialog");
-    const showDialogBtn = document.getElementById("showDialogBtn");
-    const closeBtn = document.getElementById("closeBtn");
-
-    showDialogBtn.addEventListener("click", () => {
-      document.getElementById("dialog").setAttribute("aria-hidden", "false");
-      document.getElementById("dialog").style.display = "flex";
-    });
-
-    closeBtn.addEventListener("click", () => {
-      document.getElementById("dialog").setAttribute("aria-hidden", "true");
-      document.getElementById("dialog").style.display = "none";
-    });
-  </script>
 </html>
