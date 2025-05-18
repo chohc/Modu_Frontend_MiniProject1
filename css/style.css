@@ -205,23 +205,18 @@ form > button::after {
 }
 
 /* modal */
-.modal-bg {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 1.25rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-bg[aria-hidden="true"] {
-  display: none;
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  margin: auto;
+}
+
+.modal-content {
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -235,25 +230,25 @@ form > button::after {
   box-shadow: 4px 4px 30px 0px rgba(0, 0, 0, 0.15);
 }
 
-.modal span,
-.modal p {
+.modal-content span,
+.modal-content p {
   font-family: "OTEnjoystoriesBA", sans-serif;
   font-weight: 700;
   line-height: 1;
 }
 
-.modal p,
-.modal span.pc-only {
+.modal-content p,
+.modal-content span.pc-only {
   font-size: 6rem;
   margin-bottom: 0.25rem;
 }
 
-.modal span {
+.modal-content span {
   font-size: 2.25rem;
   margin-bottom: 2.5rem;
 }
 
-.modal img {
+.modal-content img {
   width: 438px;
   aspect-ratio: 438/342;
   object-fit: contain;
@@ -402,26 +397,26 @@ footer > p {
   }
 
   /* modal */
-  .modal {
+  .modal-content {
     width: 330px;
     padding: 2.5rem 0;
   }
 
-  .modal p {
+  .modal-content p {
     font-size: 4rem;
     margin-bottom: 0;
   }
 
-  .modal > span {
+  .modal-content > span {
     font-size: 2.25rem;
     margin-bottom: 1.5rem;
   }
 
-  .modal .pc-only {
+  .modal-content .pc-only {
     font-size: 4rem !important;
   }
 
-  .modal img {
+  .modal-content img {
     width: 15rem;
     height: 11.75rem;
     margin-bottom: 1.5rem;

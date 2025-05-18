@@ -47,8 +47,8 @@
       </div>
     </main>
     <!-- dialog -->
-    <div id="modal" class="modal-bg" role="dialog" aria-hidden="true">
-      <div class="modal">
+    <dialog id="modal" class="modal">
+      <div class="modal-content">
         <p>화이팅!!<span class="pc-only">♥♥♥</span></p>
         <span>당신의 꿈을 응원합니다!</span>
         <img src="./image/라이캣-img.png" alt="응원하는 라이캣" />
@@ -58,7 +58,8 @@
           훈련하러 가기 GO!GO!
         </a>
       </div>
-    </div>
+    </dialog>
+
     <footer>
       <img src="./image/logo-m.svg" alt="Weniv" />
       <p>
@@ -73,13 +74,18 @@
       const closeBtn = document.getElementById("closeBtn");
 
       showDialogBtn.addEventListener("click", () => {
-        document.getElementById("modal").setAttribute("aria-hidden", "false");
-        document.getElementById("modal").style.display = "flex";
+        event.preventDefault();
+        modal.showModal();
       });
 
       closeBtn.addEventListener("click", () => {
-        document.getElementById("modal").setAttribute("aria-hidden", "true");
-        document.getElementById("modal").style.display = "none";
+        modal.close();
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.close();
+        }
       });
     </script>
   </body>
